@@ -7,7 +7,6 @@ const noteSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', noteSchema)
 
-
 if ( process.argv.length<3 ) {
   console.log('give password as argument')
   process.exit(1)
