@@ -36,9 +36,11 @@ let persons = [
   }
   
 ]
-app.get('/api/persons', (req, res) => {
-  res.json(persons)
-})
+app.get('/api/persons', (request, response) => {
+  Note.find({}).then(notes => {
+    response.json(notes.map(note => note.toJSON()))
+  });
+});
 
 app.get('/info', (req, res) => {
   const size= persons.length;
