@@ -52,13 +52,13 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end()
 })
 
-const generateId = (max) => {
+{/*const generateId = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
-}
+} */}
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
-  const isItNewName = persons.find(person => person.name === body.name)
+{/*  const isItNewName = persons.find(person => person.name === body.name) */}
   
 
   if (!body.name) {
@@ -67,19 +67,19 @@ app.post('/api/persons', (request, response) => {
     return response.status(400).json({error:"number = undefined"})
   }  
 
-  if(isItNewName) {
+{/*  if(isItNewName) {
     return response.status(400).json({error:'name must be unique'})
-  } 
+  }   */} 
 
-  const person = {
+  const person = new Person ({
     name: body.name,
-    number: body.number,
-    id: generateId(100000000000000000000)
-  }
+    number: body.number
+  })
 
-  persons = persons.concat(person)
+  person.save().then(savedNote => {
+    response.json(savedNote.toJSON())
+  })
 
-  response.json(person)
 })
 
 const PORT = process.env.PORT
