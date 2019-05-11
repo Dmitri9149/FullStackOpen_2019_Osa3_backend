@@ -52,9 +52,6 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end()
 })
 
-{/*const generateId = (max) => {
-  return Math.floor(Math.random() * Math.floor(max));
-} */}
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
