@@ -14,7 +14,7 @@ mongoose.connect(url, { useNewUrlParser: true })
 
 const noteSchema = new mongoose.Schema({
   name: String,
-  number: Date
+  number: String
 })
 
 noteSchema.set('toJSON', {
