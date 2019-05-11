@@ -16,8 +16,8 @@ app.use(cors())
 app.use(express.static('build'))
 
 app.get('/api/persons', (request, response) => {
-  Person.find({}).then(persons => {
-    response.json(persons.map(person => person.toJSON()))
+  Person.find({}).then(people => {
+    response.json(people.map(person => person.toJSON()))
   });
 });
 
