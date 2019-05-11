@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const Note = require('./models/note')
+const Note = require('./models/person')
 var morgan = require('morgan')
 const cors = require('cors')
 
