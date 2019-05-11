@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const Note = require('./models/person')
+const Person = require('./models/person')
 var morgan = require('morgan')
 const cors = require('cors')
 
@@ -38,9 +38,9 @@ let persons = [
   }
   
 ]
-app.get('/api/notes', (request, response) => {
-  Note.find({}).then(notes => {
-    response.json(notes.map(note => note.toJSON()))
+app.get('/api/persons', (request, response) => {
+  Person.find({}).then(persons => {
+    response.json(persons.map(person => person.toJSON()))
   });
 });
 
