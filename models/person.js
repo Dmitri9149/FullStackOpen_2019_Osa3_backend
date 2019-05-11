@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-console.log ("we are at the begin")
+console.log ("we are at the beginning")
 
 const url = process.env.MONGODB_URI
 
