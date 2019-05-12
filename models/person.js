@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+mongoose.set('useFindAndModify', false)
+
 console.log ("we are at the beginning")
 
 const url = process.env.MONGODB_URI
