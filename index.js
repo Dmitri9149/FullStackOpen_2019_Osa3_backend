@@ -58,7 +58,7 @@ app.delete('/api/persons/:id', (request, response, next) => {
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
-{/*  const isItNewName = persons.find(person => person.name === body.name) */}
+
   
 
   if (!body.name) {
@@ -66,10 +66,6 @@ app.post('/api/persons', (request, response) => {
   } else if (!body.number) {
     return response.status(400).json({error:"number = undefined"})
   }  
-
-{/*  if(isItNewName) {
-    return response.status(400).json({error:'name must be unique'})
-  }   */} 
 
   const person = new Person ({
     name: body.name,
