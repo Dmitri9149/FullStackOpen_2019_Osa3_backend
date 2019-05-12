@@ -14,8 +14,6 @@ morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
 app.use(morgan(':method :url :body :status :res[content-length] - :response-time ms'))
 
 
-
-
 app.get('/api/persons', (request, response) => {
   Person.find({}).then(people => {
     response.json(people.map(person => person.toJSON()))
@@ -59,8 +57,6 @@ app.delete('/api/persons/:id', (request, response, next) => {
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
-
-  
 
   if (!body.name) {
     return response.status(400).json({error: 'name = undefined'})
