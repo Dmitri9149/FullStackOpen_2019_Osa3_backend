@@ -23,17 +23,18 @@ app.get('/api/persons', (request, response) => {
 });
 
 app.get('/info', (req, res) => {
-  const size= persons.length;
+  Person.find({}).then(people =>{ 
   
-  res.send(
-    `<div>
-      <p>Puhelinluetelossa ${size}  henkilön tiedot</p>
-      <p> ${new Date().toString()}</p>
-    </div>`
-  );
+    res.send(
+      `<div>
+        <p>Puhelinluetelossa ${people.length}  henkilön tiedot</p>
+        <p> ${new Date().toString()}</p>
+      </div>`
+    )
+    console.log(`Server sends size as  ${people.length}`)
+  });
+});
   
-  console.log(`Server sends size as  ${size}`)
-})
 
 app.get('/api/persons/:id', (request, response, next) => {
   Person.findById(request.params.id)
