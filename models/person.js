@@ -18,12 +18,11 @@ mongoose.connect(url, { useNewUrlParser: true })
     console.log('error connecting to MongoDB:', error.message)
   })
 
-const personSchema = new mongoose.Schema({
-  name: String,
-  number: String
+const personSchema =  new mongoose.Schema({
+  name: {type:String, unique:true},
+  number: {type:String}
 })
 
-personSchema.plugin(uniqueValidator)
 
 personSchema.set('toJSON', {
   transform: (document, returnedObject) => {
@@ -32,5 +31,7 @@ personSchema.set('toJSON', {
     delete returnedObject.__v
   }
 })
+
+personSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('Person', personSchema)
