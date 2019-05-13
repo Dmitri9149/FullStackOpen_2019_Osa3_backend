@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const uniqueValidator = require('mongoose-unique-validator')
+
 mongoose.set('useFindAndModify', false)
 
 console.log ("we are at the beginning")
@@ -20,6 +22,8 @@ const personSchema = new mongoose.Schema({
   name: String,
   number: String
 })
+
+personSchema.plugin(uniqueValidator)
 
 personSchema.set('toJSON', {
   transform: (document, returnedObject) => {
