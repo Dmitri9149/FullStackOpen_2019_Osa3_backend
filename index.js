@@ -32,7 +32,6 @@ app.get('/info', (req, res) => {
     console.log(`Server sends size as  ${people.length}`)
   });
 });
-  
 
 app.get('/api/persons/:id', (request, response, next) => {
   Person.findById(request.params.id)
