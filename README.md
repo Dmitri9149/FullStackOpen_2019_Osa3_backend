@@ -4,5 +4,5 @@
 
 ## Osa3
 
-[3.10](https://peaceful-retreat-60713.herokuapp.com/)
+[puhelinluettelo ja tietokanta 3.22 (simple server at Heroku + mongoDataBase,Atlas)](https://peaceful-retreat-60713.herokuapp.com/)
 
