@@ -17,12 +17,11 @@ app.use(morgan(':method :url :body :status :res[content-length] - :response-time
 app.get('/api/persons', (request, response) => {
   Person.find({}).then(people => {
     response.json(people.map(person => person.toJSON()))
-  });
-});
+  })
+})
 
 app.get('/info', (req, res) => {
-  Person.find({}).then(people =>{ 
-  
+  Person.find({}).then(people => {
     res.send(
       `<div>
         <p>Puhelinluetelossa ${people.length}  henkilön tiedot</p>
@@ -30,8 +29,8 @@ app.get('/info', (req, res) => {
       </div>`
     )
     console.log(`Server sends size as  ${people.length}`)
-  });
-});
+  })
+})
 
 app.get('/api/persons/:id', (request, response, next) => {
   Person.findById(request.params.id)
@@ -58,11 +57,10 @@ app.post('/api/persons', (request, response, next) => {
   const body = request.body
 
   if (body.name === undefined) {
-    return response.status(400).json({error: 'name = undefined'})
+    return response.status(400).json({ error: 'name = undefined' })
   } else if (body.number === undefined) {
-    return response.status(400).json({error:"number = undefined"})
-  }  
-
+    return response.status(400).json({ error:'number = undefined' })
+  }
   const person = new Person ({
     name: body.name,
     number: body.number
@@ -81,7 +79,6 @@ app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
 
   const person = {
-    
     number: body.number
   }
 
@@ -101,11 +98,11 @@ app.use(unknownEndpoint)
 const errorHandler = (error, request, response, next) => {
   console.error(error.message)
 
-  if (error.name === 'CastError' && error.kind == 'ObjectId') {
+  if (error.name === 'CastError' && error.kind === 'ObjectId') {
     return response.status(400).send({ error: 'malformatted id' })
   } else if (error.name === 'ValidationError') {
     return response.status(400).json({ error: error.message })
-  }  
+  }
   next(error)
 }
 
